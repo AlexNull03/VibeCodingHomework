@@ -111,7 +111,9 @@ python -m http.server 8080
 
 ### 👤 作者 · Author
 
-**AlexNull03** · [GitHub](https://github.com/AlexNull03) · [作品集门户](https://alexnull03.github.io/VibeCodingHomework/)
+**陈允升** · 数字经济2501班
+
+[GitHub](https://github.com/AlexNull03) · [作品集门户](https://alexnull03.github.io/VibeCodingHomework/)
 
 ### 🎓 课程 · Course
 
