@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#07070c">
+<title>AI 编程课作品集 · Portal</title>
+<meta name="description" content="AI 编程课作业作品展示门户 —— 记录每一次从提示词到成品的创作过程。">
+<meta name="author" content="AlexNull03">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI 编程课作品集 · Portal">
+<meta property="og:description" content="深色科技风作品展示门户，记录每一次从提示词到成品的创作过程。">
+<meta property="og:locale" content="zh_CN">
+
+<!-- Favicon（内联 SVG，无外部依赖） -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23667eea'/%3E%3Cstop offset='1' stop-color='%23764ba2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Cpath d='M11 11l-4 5 4 5M21 11l4 5-4 5' stroke='%23fff' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+<!-- Fonts: Syne（展示） / Noto Sans SC（正文） / JetBrains Mono（技术标签） -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- ══ 环境背景层 ══════════════════════════════════════════════ -->
+<div class="bg" aria-hidden="true">
+  <div class="bg__wash"></div>
+  <div class="bg__orb bg__orb--a" data-parallax="0.045"></div>
+  <div class="bg__orb bg__orb--b" data-parallax="-0.03"></div>
+  <div class="bg__orb bg__orb--c" data-parallax="0.02"></div>
+  <div class="bg__grid"></div>
+  <div class="bg__scan"></div>
+  <div class="bg__grain"></div>
+  <div class="bg__spot"></div>
+</div>
+
+<!-- 滚动进度条 -->
+<div class="scrollbar" aria-hidden="true"><i></i></div>
+
+<div class="shell">
+
+  <!-- ══ 导航 ════════════════════════════════════════════════ -->
+  <header class="nav">
+    <div class="wrap nav__in">
+      <a class="brand" href="#top" aria-label="返回顶部">
+        <span class="brand__mark"><span>&lt;/&gt;</span></span>
+        <span class="txt">PORTAL</span>
+      </a>
+
+      <nav class="nav__links" aria-label="主导航">
+        <a class="nav__link" href="#works">作品</a>
+        <a class="nav__link" href="#pipeline">流程</a>
+        <a class="nav__link" href="#about">关于</a>
+      </nav>
+
+      <a class="nav__cta" href="https://github.com/AlexNull03/VibeCodingHomework" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.4 7.4 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
+        </svg>
+        GitHub
+      </a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ══ HERO ══════════════════════════════════════════════ -->
+    <section class="hero">
+      <div class="wrap hero__in">
+
+        <div class="hero__lead">
+          <p class="hero__idx">
+            <b>PORTAL / 001</b>
+            <span class="rule"></span>
+            <span>VIBE CODING · 2026</span>
+          </p>
+
+          <h1 class="hero__title">
+            <span class="ln"><i>AI 编程课</i></span>
+            <span class="ln"><i class="grad-text">作品集</i></span>
+          </h1>
+
+          <p class="hero__sub">
+            这里收录课程中的每一次实践 —— 从一句<strong>提示词</strong>出发，
+            经过拆解、迭代与验证，最终落地为可运行、可访问的<strong>真实作品</strong>。
+            不追求一次成型，只记录持续演进的过程。
+          </p>
+
+          <div class="hero__acts">
+            <a class="btn btn--fill" href="#works">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/>
+                <rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>
+              </svg>
+              浏览作品
+            </a>
+            <a class="btn btn--ghost" href="https://github.com/AlexNull03/VibeCodingHomework" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+              </svg>
+              查看源码仓库
+            </a>
+          </div>
+
+          <dl class="hero__rail">
+            <div class="stat">
+              <dt class="stat__k">收录作品</dt>
+              <dd class="stat__n"><span data-count>00</span><em>件</em></dd>
+            </div>
+            <div class="stat">
+              <dt class="stat__k">当前版本</dt>
+              <dd class="stat__n">v1<em>.0</em></dd>
+            </div>
+            <div class="stat">
+              <dt class="stat__k">部署方式</dt>
+              <dd class="stat__n">Pages<em>auto</em></dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- 右侧：状态面板 -->
+        <aside class="panel" aria-label="门户运行状态">
+          <div class="panel__bar">
+            <span class="panel__name">PORTAL.STATUS</span>
+            <span class="live"><i class="live__dot"></i>Online</span>
+          </div>
+
+          <dl class="rows">
+            <div class="row">
+              <dt>REPOSITORY</dt>
+              <dd>VibeCodingHomework</dd>
+            </div>
+            <div class="row">
+              <dt>BRANCH</dt>
+              <dd>main</dd>
+            </div>
+            <div class="row">
+              <dt>WORKS</dt>
+              <dd><span data-count>00</span> / <span data-count-label>待发布作品</span></dd>
+            </div>
+            <div class="row">
+              <dt>BUILD</dt>
+              <dd><span class="ok">STATIC · PASS</span></dd>
+            </div>
+            <div class="row">
+              <dt>STACK</dt>
+              <dd>HTML · CSS · JS</dd>
+            </div>
+            <div class="row">
+              <dt>UPDATED</dt>
+              <dd data-updated="2026-09-13">2026-09-13</dd>
+            </div>
+            <div class="row">
+              <dt>UPTIME</dt>
+              <dd><span data-clock>--:--:-- UTC</span></dd>
+            </div>
+          </dl>
+
+          <div class="wave" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- ══ 跑马灯 ════════════════════════════════════════════ -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <div class="ticker__set">
+          <span>Prompt Engineering</span>
+          <span>Static Site</span>
+          <span>GitHub Pages</span>
+          <span>Responsive Layout</span>
+          <span>Intersection Observer</span>
+          <span>Glassmorphism</span>
+          <span>Vanilla JavaScript</span>
+          <span>Design System</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ 作品展示 ══════════════════════════════════════════ -->
+    <section class="sec" id="works">
+      <div class="wrap">
+
+        <div class="sec__head rv rv--mask">
+          <div>
+            <p class="eyebrow">Selected Works · 作品陈列</p>
+            <h2 class="sec__t">每一件作品，<br>都是一次完整的<span class="grad-text">推理落地</span></h2>
+            <p class="sec__d">按课程进度顺序陈列。卡片内含项目说明、技术栈标签、源码与在线演示入口。</p>
+          </div>
+          <p class="sec__no">[ <span data-count>00</span> ]</p>
+        </div>
+
+        <!-- 作品卡片网格：作品添加后由 main.js 自动显示 -->
+        <div class="grid" id="works-grid" data-stagger hidden>
+
+          <!-- ══════════════════════════════════════════════════════════
+               作品卡片模板 · CARD TEMPLATE
+               添加新作品时，复制下面整段 <article> 到 #works-grid 内即可。
+               计数、空状态切换、错峰淡入动画均由 js/main.js 自动处理。
+               字段说明：
+                 .card__no       序号，如 01 / 02
+                 .card__status   状态标签，如 LIVE / WIP / ARCHIVED
+                 .card__glyph    项目图标（emoji 或替换为 <img>）
+                 .card__title    项目名称
+                 .card__desc     一句话简介
+                 .tag            技术栈标签，可增减
+                 .mini           左：查看详情（源码/文档） 右：在线演示
+               ══════════════════════════════════════════════════════════
+
+          <article class="card rv">
+            <div class="card__thumb">
+              <span class="card__no">01</span>
+              <span class="card__status">LIVE</span>
+              <span class="card__glyph">🛰</span>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">项目名称</h3>
+              <p class="card__desc">用一句话说明这个作品解决了什么问题，以及它最值得被记住的那个细节。</p>
+              <div class="tags">
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">JavaScript</span>
+              </div>
+              <div class="card__acts">
+                <a class="mini" href="#" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3h7v7"/><path d="M10 21H3v-7"/><path d="M21 3l-9 9"/><path d="M3 21l9-9"/></svg>
+                  查看详情
+                </a>
+                <a class="mini mini--solid" href="#" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+                  在线演示
+                </a>
+              </div>
+            </div>
+          </article>
+
+          ══════════════════════════════════════════════════════════ -->
+
+        </div>
+
+        <!-- 空状态：当 #works-grid 内没有 .card 时自动展示 -->
+        <div class="empty rv" id="empty-state">
+          <span class="empty__cnr empty__cnr--tl"></span>
+          <span class="empty__cnr empty__cnr--tr"></span>
+          <span class="empty__cnr empty__cnr--bl"></span>
+          <span class="empty__cnr empty__cnr--br"></span>
+
+          <div class="empty__orb" aria-hidden="true"><span class="empty__core"></span></div>
+
+          <h3 class="empty__t">作品即将上线，敬请期待</h3>
+          <p class="empty__d">
+            陈列架已经搭好，灯光也已就位。第一件作品正在从提示词走向成品，
+            完成后会立即出现在这个位置。
+          </p>
+          <p class="empty__meta"><b>●</b> STATUS · WAITING FOR FIRST DROP</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ 创作流程 ══════════════════════════════════════════ -->
+    <section class="sec" id="pipeline">
+      <div class="wrap">
+
+        <div class="sec__head rv rv--mask">
+          <div>
+            <p class="eyebrow">Workflow · 创作流程</p>
+            <h2 class="sec__t">从一句话，<br>到一个可访问的<span class="grad-text">线上地址</span></h2>
+          </div>
+          <p class="sec__no">04 STEPS</p>
+        </div>
+
+        <div class="pipe rv" data-stagger>
+          <div class="pipe__cell rv">
+            <p class="pipe__n">STEP 01</p>
+            <h3 class="pipe__t">提出需求</h3>
+            <p class="pipe__d">用自然语言描述目标、受众与约束条件，把模糊的想法写成明确的提示词。</p>
+          </div>
+          <div class="pipe__cell rv">
+            <p class="pipe__n">STEP 02</p>
+            <h3 class="pipe__t">拆解生成</h3>
+            <p class="pipe__d">AI 将需求拆分为目录结构、样式系统与交互逻辑，逐文件生成可运行代码。</p>
+          </div>
+          <div class="pipe__cell rv">
+            <p class="pipe__n">STEP 03</p>
+            <h3 class="pipe__t">校验迭代</h3>
+            <p class="pipe__d">本地打开预览，检查布局、响应式与交互细节，针对偏差反复修正。</p>
+          </div>
+          <div class="pipe__cell rv">
+            <p class="pipe__n">STEP 04</p>
+            <h3 class="pipe__t">推送上线</h3>
+            <p class="pipe__d">提交至 main 分支，GitHub Actions 自动构建并部署到 Pages 公开地址。</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ 关于 ══════════════════════════════════════════════ -->
+    <section class="sec" id="about">
+      <div class="wrap">
+        <div class="sec__head rv rv--mask">
+          <div>
+            <p class="eyebrow">About · 关于本站</p>
+            <h2 class="sec__t">一个纯粹的<span class="grad-text">静态门户</span></h2>
+            <p class="sec__d">
+              不使用任何框架与构建工具，仅由 HTML、CSS 与原生 JavaScript 构成，
+              推送即可通过 GitHub Pages 直接访问。所有更新记录都保存在仓库的
+              <code>progress.md</code> 中，可追溯每一次改动的动机与细节。
+            </p>
+          </div>
+          <p class="sec__no">NO BUILD · NO DEPS</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══ 页脚 ════════════════════════════════════════════════ -->
+  <footer class="foot">
+    <div class="wrap">
+
+      <div class="foot__top rv">
+        <div>
+          <p class="eyebrow">Source · 源码仓库</p>
+          <h2 class="foot__t">所有作品，<br>都在这个仓库里生长。</h2>
+        </div>
+        <a class="gh" href="https://github.com/AlexNull03/VibeCodingHomework" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.4 7.4 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
+          </svg>
+          AlexNull03 / VibeCodingHomework
+        </a>
+      </div>
+
+      <div class="foot__bot">
+        <p>© <span data-year>2026</span> AI 编程课作品集 · Built with plain HTML / CSS / JS</p>
+        <nav aria-label="页脚导航">
+          <a href="#top">返回顶部</a>
+          <a href="#works">作品</a>
+          <a href="#pipeline">流程</a>
+          <a href="progress.md" target="_blank" rel="noopener noreferrer">更新记录</a>
+        </nav>
+      </div>
+
+    </div>
+  </footer>
+
+</div><!-- /.shell -->
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
