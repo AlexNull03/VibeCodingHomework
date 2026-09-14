@@ -80,3 +80,28 @@ portal/
 - 权限：`contents: read` / `pages: write` / `id-token: write`
 - 发布目录：`./portal`（仓库根目录的 portal 子目录内容作为站点根）
 - 首次启用需在仓库 **Settings → Pages → Source** 中选择 **GitHub Actions**
+
+---
+
+## v1.1 — 2026-09-14
+
+### 用户提示词
+> 将百度秒哒生成的 Todolist 待办网站作为子项目加入 portal 展示，含在线演示入口。
+
+### 修改细节
+- 在 `portal/index.html` 的 `#works-grid` 内，参照注释模板追加第一张真实作品卡片 `<article class="card rv">`
+- 卡片字段填充：
+  - 序号 `01`，状态标签 `LIVE`（已上线），图标 emoji `📝`
+  - 标题：**Todolist · 待办清单**
+  - 描述：基于 React + Tailwind CSS 的待办事项应用，焦糖橙暖色卡片式设计；支持增删改查、全部/进行中/已完成三态筛选、温馨空状态提示与移动端适配，采用乐观更新与失败回滚的错误处理
+  - 技术栈标签：React / Tailwind CSS / shadcn/ui / 百度秒哒
+  - 「查看详情」按钮 → `https://github.com/AlexNull03/VibeCodingHomework/blob/main/Todolist/introduce.md`
+  - 「在线演示」按钮 → `https://app-ee2c6ujdy9z5.miaoda.online`
+- 保留 `#works-grid` 内的 HTML 注释模板（CARD TEMPLATE），供后续作品复制使用
+- 同步更新 Hero 右侧状态面板 `UPDATED` 字段为 `2026-09-14`
+- 无需改动 `js/main.js`：`initWorksState()` 自动统计到 1 张卡片，将「收录作品」计数由 `00` 更新为 `01`，自动隐藏 `#empty-state` 空状态面板并显示作品网格；`data-stagger` 错峰淡入与卡片鼠标光斑效果对新卡片自动生效
+
+### 影响范围
+- 修改文件：`portal/index.html`、`portal/progress.md`
+- 未触碰：`portal/css/style.css`、`portal/js/main.js`、`.github/workflows/deploy.yml`
+- 视觉效果：卡片沿用模板自带类名（`.card / .card__thumb / .card__body / .tags / .mini`），与现有深色科技风完全协调
