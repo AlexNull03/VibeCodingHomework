@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stego Transfer</title>
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<canvas id="rain" aria-hidden="true"></canvas>
+<div class="bg-title" aria-hidden="true">ENCRYPT</div>
+
+<div class="page-wrap">
+
+<header class="site-head">
+  <h1>STEGO TRANSFER</h1>
+  <p class="tagline">本地加密与图片隐写工具 · 口令 → 密文（可选有效期）→ 文本或 PNG 图片传送<br>零后端 · 零依赖 · 离线可用 · 全部运算在浏览器本地完成</p>
+</header>
+
+<div class="main-grid">
+<section id="intro" class="section">
+  <h2>功能介绍</h2>
+  <ul class="feature-list">
+    <li><strong>生成密文：</strong>密文为纯字母数字文本，不含特殊字符，可经任意文本通道传送；可设定有效时间，过期后任何人（包括发送者本人）都无法解密。</li>
+    <li><strong>纯文本加密：</strong>输入口令、原文与有效性设置，直接输出密文文本。</li>
+    <li><strong>图片隐写：</strong>上传图片统一转为 PNG 后将密文隐藏写入，实时显示容量并给出选图建议；输出载密 PNG 与等价密文双份。</li>
+    <li><strong>解密：</strong>凭口令与时效选项还原原文；不确定时选"自动"即可。</li>
+  </ul>
+  <div class="disclaimer">
+    <h3>! DISCLAIMER</h3>
+    <ol>
+      <li>所有运算在浏览器本地完成，本站不收集、不上传任何数据。</li>
+      <li>本工具仅供学习与合法用途，禁止用于任何违法活动。</li>
+      <li>图片隐写不保证对抗专业隐写分析 / 取证工具。</li>
+      <li>载密图片必须以 <strong>PNG 原文件</strong>传送：压缩、截图、缩放都会导致数据损坏。</li>
+      <li>设置了有效时间的密文，过期后发送者本人也无法解密。</li>
+      <li>忘记口令无法找回（无后门）。建议口令长度 ≥ 8 位。</li>
+    </ol>
+  </div>
+</section>
+
+<aside class="module-rail">
+  <nav class="entry-cards">
+    <div class="entry-card encrypt-card" data-modal="modal-encrypt" tabindex="0" role="button">
+      <div class="card-top">
+        <span class="icon">&#x1F512;</span>
+        <span class="status"><span class="dot"></span>READY</span>
+      </div>
+      <strong>ENCRYPT</strong>
+      <small>纯文本密文 / 图片隐写</small>
+      <div class="eq"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="corner-fx fx-ring" aria-hidden="true"></div>
+    </div>
+    <div class="entry-card decrypt-card" data-modal="modal-decrypt" tabindex="0" role="button">
+      <div class="card-top">
+        <span class="icon">&#x1F513;</span>
+        <span class="status"><span class="dot"></span>READY</span>
+      </div>
+      <strong>DECRYPT</strong>
+      <small>凭口令与时效选项还原</small>
+      <div class="eq"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="corner-fx fx-radar" aria-hidden="true"><i></i></div>
+    </div>
+  </nav>
+</aside>
+</div><!-- /.main-grid -->
+
+<footer class="site-foot">
+  <p>pure static · zero backend · zero dependencies · offline ready · all crypto in browser</p>
+</footer>
+
+</div><!-- /.page-wrap -->
+
+<button type="button" class="devlog-trigger" data-modal="modal-devlog" aria-label="查看开发过程">// 开发过程</button>
+
+<!-- ════════ DEVLOG MODAL ════════ -->
+<div class="modal-backdrop" id="modal-devlog">
+  <div class="modal-panel dev-modal">
+    <div class="modal-header">
+      <h2>DEV LOG · 迭代路线</h2>
+      <button class="modal-close" type="button" aria-label="关闭">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p class="devlog-note">⚠ 演示期档案：本弹窗含实现细节，正式发布时将整体移除该入口。</p>
+      <div class="tl">
+        <div class="tl-item">
+          <h3>R1 · 立项与规格</h3>
+          <blockquote>「创建网站：①生成密文——盐值手动设置为 base 密文的第 16-32 位：有时效则盐值=时间戳整除有效秒数（可加固定值），有效时间秒数（可加固定值）嵌入 16-32 位；无时效则盐值直接随机嵌入。②图像隐写——上传图片转 PNG、计算可写入长度并给选图建议，同时输出载密 PNG 和密文。③页面三段式：介绍+免责声明 / 加密 / 解密；解密提供有时效/无时效/自动三态选项。」</blockquote>
+          <p>以 detail.md v1.0 为技术规格：盐字段<b>插入</b>（非替换）base64 第 16 字符后、时效窗口盐 <code>window = ⌊ts/duration⌋</code>、混淆常数 <code>K_TS=104729</code>、<code>K_DUR=7919</code>、三态时效试解。建立 progress.md 全程留痕；由 detail.md 生成 target.md（Trae→Qoder）。</p>
+        </div>
+        <div class="tl-item">
+          <h3>R2 · 编码实现</h3>
+          <ul class="tech">
+            <li><b>crypto.js：</b>PBKDF2-HMAC-SHA256 ×100000 → AES-256-GCM（Web Crypto API，零依赖）。密码帧 = 版本+标志+IV+密文‖tag；无时效盐字段=12B 随机盐 base64，有时效=补零(duration+K_DUR) 共 16 字符；时效密钥盐=<code>SHA-256(DOMAIN_SEP:(window+K_TS))</code>；自动模式按 [随机盐 → 当前窗口 → 前一窗口] 顺序试解，GCM 验签成功即判定。</li>
+            <li><b>stego.js：</b>量化边缘图（通道 &amp;0xF8 后算 4 邻域梯度、阈值 16）保证收发候选像素集逐像素一致；LSB Matching ±1 且方向不跨量化桶；STEG01 帧（魔数 6B+版本 1B+长度 4B 大端+载荷）；容量公式 <code>M_max=⌊(Ccap−16)/4⌋×3−30</code>。</li>
+            <li><b>UI：</b>单页三段式 + 选项卡；表单校验、防重复提交、Clipboard 复制回退、大图 rAF 分片。</li>
+          </ul>
+          <p>Node 自测 27/27 通过；端到端联测修复 3 缺陷：提取未按偏移读比特流、后台标签页 rAF 挂起、base32 非规范尾组漏检。</p>
+        </div>
+        <div class="tl-item">
+          <h3>R3–R6 · 连续迭代</h3>
+          <p>密文字符集收敛为纯大写字母数字（base32 编码，可经任意文本通道传送）；时效-only 改版；图片容量评估与选图建议上线；每轮全量回归。</p>
+        </div>
+        <div class="tl-item">
+          <h3>R7 · 体验与隐私改版</h3>
+          <blockquote>「①不需要在任何地方说明我们的任何详细加密和载密原理，因为会帮助攻击者破解；②加密没有'无时效'选项，时效最好给多种单位选择（秒/分钟/小时/天）；③加密图片无法下载，请修正；④选择加密图片时不要加尺寸限制（至少 20M 以下不限）。」</blockquote>
+          <p>全站文案与报错脱敏（删除 PBKDF2/AES/SHA/base32/盐字段/插入位置/窗口/验签/LSB 等字样），源码注释同步中性化；有效性二选一+单位下拉（内部换算秒，60s~3650 天）；下载修复根因：`&lt;button&gt;` 设 href/download 不触发导航，改为临时 `&lt;a&gt;` 派发 click；上传限制 2MB→20MB、取消 1024×1024 像素限制。</p>
+        </div>
+        <div class="tl-item">
+          <h3>R8 · 时效严格化 + 盐字段去特征</h3>
+          <blockquote>「①时效的意思是把当前时间戳整除期限作为盐值，超过期限盐值变化，应该无法正确解密；②密文 AEARTBYNNNPLGUP7<b>00000000000007979</b>D5I6… 里出现这样一截数字肯定让人怀疑有特殊含义——把时间戳整除有效秒数后乘以适当大小的值再加一个不那么特殊的大数，把盐值真正藏起来。」</blockquote>
+          <ul class="tech">
+            <li>盐字段重写：10 字节布局 = 随机量 R + 有效期按 R 派生掩码逐字节异或(4B) + R 与有效期绑定校验(2B) + 随机(3B) → base32 后 16 字符，与无时效随机字段<b>完全同形</b>；随机字段误判为有效期实测 0/2000。</li>
+            <li>时间参数派生改为 <code>SHA-256(DOMAIN_SEP:(window×15485863+982451653))</code>（素数乘数+10⁹量级加数），移除 K_TS/K_DUR。</li>
+            <li>严格过期：候选由 [当前, 前一窗口] 改为只试当前；自动模式按帧内 FLAG_TIMED 决定次序，避免白跑 10 万次迭代派生，耗时回到约 0.3s。</li>
+            <li><b>热修复</b>（「实际有效时间远小于设置值」）：窗口对齐导致设 30 分钟在窗口末尾只剩几秒——改为加密时把精确到秒的时间戳写入 IV 前 4 字节（后 8 字节仍随机），密钥派生用该精确戳不再整除；GCM 验签通过后检查 加密时间+设定秒数 &gt; 当前时间；剩余时间精确到秒。</li>
+          </ul>
+          <p>自测扩充至 31/31（新增全范围编解码互逆、误读率、字段同形、钉时钟跨窗必败/同窗必解）。破坏性变更：旧补零版时效密文不再兼容。</p>
+        </div>
+        <div class="tl-item">
+          <h3>R9 · 部署上线 + 极客风改版</h3>
+          <blockquote>「上传到 www.alexcn.work 的 /home/alex/Work2/Qoder」「访问出现 404」「界面改极客风+模块化，加密解密做成主页模块点击弹窗」「主页加字符雨、ENCRYPT 渐变大字背景、模块放介绍右边、加实时动态特效」</blockquote>
+          <p>404 双根因：真正生效的 nginx 配置在 <code>/etc/nginx/conf.d/purenavigation.conf</code>（certbot 443 块），其 <code>location / { return 404; }</code> 兜底拦截；/home/alex 权限 750 挡住 www-data。修复：<code>alias /home/alex/Work2/Qoder/</code> 插在兜底前 + <code>chmod o+x /home/alex</code> → 200 OK。视觉：等宽字体栈、网格背景、扫描线、字符雨（canvas destination-out 拖尾）、渐变流动水印、双弹窗模块化、卡片呼吸辉光/状态灯/律动条。</p>
+        </div>
+        <div class="tl-item">
+          <h3>R10 · 动效打磨 + 开发过程入口</h3>
+          <p>双栏 boundingRect 实测对齐（桌面右栏 flex:1 均分贴齐面板上下边界、移动 16px 间距回落下方）；瞄准环/雷达角标与律动条同基线；双呼吸灯 6.4s/8.2s 异频色彩循环错相；新增本"开发过程"时间线弹窗（演示期）。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ ENCRYPT MODAL ════════ -->
+<div class="modal-backdrop" id="modal-encrypt">
+  <div class="modal-panel encrypt-modal">
+    <div class="modal-header">
+      <h2>ENCRYPT</h2>
+      <button class="modal-close" type="button" aria-label="关闭">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-panel="enc-text" type="button">纯文本加密</button>
+        <button class="tab" data-panel="enc-image" type="button">图片隐写</button>
+      </div>
+
+      <!-- 模式 A：纯文本 -->
+      <div id="enc-text" class="panel active">
+        <p class="panel-desc">输出口令、原文与有效性设置，得到纯字母数字密文。</p>
+        <form id="form-enc-text" autocomplete="off">
+          <div class="grid-2">
+            <label>口令 <input type="password" id="et-pw" required placeholder="建议 ≥ 8 位"></label>
+            <label>确认口令 <input type="password" id="et-pw2" required placeholder="再次输入"></label>
+          </div>
+          <label>原文 <textarea id="et-plain" rows="5" required placeholder="要加密的内容，支持中英文"></textarea></label>
+          <fieldset class="dur">
+            <legend>VALIDITY</legend>
+            <label><input type="radio" name="et-mode" value="untimed"> 无时效（不过期）</label>
+            <label><input type="radio" name="et-mode" value="timed" checked> 设定有效时间
+              <input type="number" id="et-dur" min="1" step="1" placeholder="数值">
+              <select id="et-unit">
+                <option value="1">秒</option>
+                <option value="60">分钟</option>
+                <option value="3600" selected>小时</option>
+                <option value="86400">天</option>
+              </select>
+            </label>
+            <p class="hint">min: 60s · max: 3650d</p>
+          </fieldset>
+          <div class="btn-row">
+            <button type="submit" class="primary" id="et-go">生成密文</button>
+            <button type="button" class="reset-btn" id="et-reset">清除</button>
+          </div>
+        </form>
+        <div class="out" id="et-out" hidden>
+          <label>密文（纯字母数字）
+            <textarea id="et-cipher" rows="6" readonly></textarea>
+          </label>
+          <div class="out-actions">
+            <button type="button" class="copy-btn" data-src="et-cipher">复制密文</button>
+            <span id="et-note" class="note"></span>
+          </div>
+        </div>
+        <p class="msg err" id="et-err" hidden></p>
+      </div>
+
+      <!-- 模式 B：图片隐写 -->
+      <div id="enc-image" class="panel">
+        <p class="panel-desc">选择图片（≤ 20MB），统一转 PNG 并计算可写入长度。</p>
+        <input type="file" id="ei-file" accept="image/*">
+        <div id="ei-cap" class="capacity" hidden></div>
+        <div id="ei-preview-wrap" class="preview-wrap" hidden>
+          <canvas id="ei-preview"></canvas>
+        </div>
+        <form id="form-enc-image" autocomplete="off" hidden>
+          <p class="step-title">// STEP 2: 口令、原文与有效时间</p>
+          <div class="grid-2">
+            <label>口令 <input type="password" id="ei-pw" required placeholder="建议 ≥ 8 位"></label>
+            <label>确认口令 <input type="password" id="ei-pw2" required placeholder="再次输入"></label>
+          </div>
+          <label>原文 <span id="ei-count" class="count"></span>
+            <textarea id="ei-plain" rows="5" required placeholder="容量内输入，实时计数"></textarea>
+          </label>
+          <p id="ei-sugg" class="hint" hidden></p>
+          <fieldset class="dur">
+            <legend>VALIDITY</legend>
+            <label><input type="radio" name="ei-mode" value="untimed"> 无时效（不过期）</label>
+            <label><input type="radio" name="ei-mode" value="timed" checked> 设定有效时间
+              <input type="number" id="ei-dur" min="1" step="1" placeholder="数值">
+              <select id="ei-unit">
+                <option value="1">秒</option>
+                <option value="60">分钟</option>
+                <option value="3600" selected>小时</option>
+                <option value="86400">天</option>
+              </select>
+            </label>
+            <p class="hint">min: 60s · max: 3650d</p>
+          </fieldset>
+          <div class="btn-row">
+            <button type="submit" class="primary" id="ei-go">生成载密图片</button>
+            <button type="button" class="reset-btn" id="ei-reset">清除</button>
+          </div>
+        </form>
+        <div class="out" id="ei-out" hidden>
+          <p class="out-title">// OUTPUT (内容等价，任选其一)</p>
+          <div class="out-actions">
+            <button type="button" class="primary" id="ei-download">下载载密 PNG</button>
+          </div>
+          <label>纯字母数字密文 <textarea id="ei-cipher" rows="6" readonly></textarea></label>
+          <div class="out-actions">
+            <button type="button" class="copy-btn" data-src="ei-cipher">复制密文</button>
+            <span id="ei-note" class="note"></span>
+          </div>
+          <p class="hint">⚠ 载密 PNG 必须以原文件发送（勿压缩、勿截图、勿改尺寸）。</p>
+        </div>
+        <p class="msg err" id="ei-err" hidden></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ DECRYPT MODAL ════════ -->
+<div class="modal-backdrop" id="modal-decrypt">
+  <div class="modal-panel decrypt-modal">
+    <div class="modal-header">
+      <h2>DECRYPT</h2>
+      <button class="modal-close" type="button" aria-label="关闭">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-panel="dc-text" type="button">纯文本密文</button>
+        <button class="tab" data-panel="dc-image" type="button">载密图片</button>
+      </div>
+
+      <div id="dc-text" class="panel active">
+        <label>粘贴密文（纯字母数字） <textarea id="dt-cipher" rows="5" placeholder="以纯文本方式收到的密文"></textarea></label>
+      </div>
+
+      <div id="dc-image" class="panel">
+        <p class="panel-desc">上传载密 PNG 原文件（≤ 20MB），先提取内部密文，再走同一解密流程。</p>
+        <input type="file" id="di-file" accept="image/png,image/*">
+        <details id="di-extracted-wrap" hidden>
+          <summary>从图片中提取到的密文</summary>
+          <textarea id="di-extracted" rows="4" readonly></textarea>
+        </details>
+      </div>
+
+      <form id="form-decrypt" autocomplete="off" class="shared-form">
+        <fieldset class="dur trimode">
+          <legend>TIME OPTION</legend>
+          <label><input type="radio" name="dc-dur" value="timed" required> 有时效</label>
+          <label><input type="radio" name="dc-dur" value="untimed"> 无时效</label>
+          <label><input type="radio" name="dc-dur" value="auto" checked> 自动（推荐）</label>
+        </fieldset>
+        <label>口令 <input type="password" id="dc-pw" required placeholder="发送方设置的口令"></label>
+        <div class="btn-row">
+          <button type="submit" class="primary" id="dc-go">解密</button>
+          <button type="button" class="reset-btn" id="dc-reset">清除</button>
+        </div>
+      </form>
+      <div class="out" id="dc-out" hidden>
+        <label>还原原文 <textarea id="dc-plain" rows="5" readonly></textarea></label>
+        <div class="out-actions">
+          <button type="button" class="copy-btn" data-src="dc-plain">复制原文</button>
+          <span id="dc-countdown" class="note"></span>
+        </div>
+      </div>
+      <p class="msg err" id="dc-err" hidden></p>
+      <p class="msg ok" id="dc-ok" hidden></p>
+    </div>
+  </div>
+</div>
+
+<script src="./js/crypto.js"></script>
+<script src="./js/stego.js"></script>
+<script src="./js/app.js"></script>
+</body>
+</html>
