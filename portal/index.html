@@ -55,6 +55,7 @@
       <nav class="nav__links" aria-label="主导航">
         <a class="nav__link" href="#works">作品</a>
         <a class="nav__link" href="#pipeline">流程</a>
+        <a class="nav__link" href="#profile">关于我</a>
         <a class="nav__link" href="#about">关于</a>
       </nav>
 
@@ -153,7 +154,7 @@
             </div>
             <div class="row">
               <dt>UPDATED</dt>
-              <dd data-updated="2026-09-21">2026-09-21</dd>
+              <dd data-updated="2026-11-09">2026-11-09</dd>
             </div>
             <div class="row">
               <dt>UPTIME</dt>
@@ -313,6 +314,40 @@
             </div>
           </article>
 
+          <!-- 作品 03 · PureNavigation 纯净导航站 -->
+          <article class="card rv">
+            <div class="card__thumb">
+              <span class="card__no">03</span>
+              <span class="card__status">LIVE</span>
+              <span class="card__glyph">🧭</span>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">PureNavigation · 纯净导航站</h3>
+              <p class="card__desc">
+                只给官方入口的软件导航站，附两个 AI 入口：安装建议、网站真伪判别。
+                不收任何厂商推广费，链接全部指向人工核对过的官网；
+                FastAPI 单进程同时提供 API 与前端静态站，判别功能内置 SSRF 安全闸门。
+              </p>
+              <div class="tags">
+                <span class="tag">React 19</span>
+                <span class="tag">Vite 7</span>
+                <span class="tag">Tailwind 4</span>
+                <span class="tag">FastAPI</span>
+                <span class="tag">DeepSeek</span>
+              </div>
+              <div class="card__acts">
+                <a class="mini" href="https://github.com/AlexNull03/PureNavigation" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3h7v7"/><path d="M10 21H3v-7"/><path d="M21 3l-9 9"/><path d="M3 21l9-9"/></svg>
+                  查看详情
+                </a>
+                <a class="mini mini--solid" href="https://www.alexcn.work/PureNavigation/main/" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+                  在线演示
+                </a>
+              </div>
+            </div>
+          </article>
+
         </div>
 
         <!-- 空状态：当 #works-grid 内没有 .card 时自动展示 -->
@@ -368,6 +403,83 @@
             <h3 class="pipe__t">推送上线</h3>
             <p class="pipe__d">提交至 main 分支，GitHub Actions 自动构建并部署到 Pages 公开地址。</p>
           </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ 关于我 / 个人经历 ══════════════════════════════════ -->
+    <section class="sec" id="profile">
+      <div class="wrap">
+
+        <div class="sec__head rv rv--mask">
+          <div>
+            <p class="eyebrow">Profile · 关于我</p>
+            <h2 class="sec__t">代码之外，<br>是一条持续生长的<span class="grad-text">个人轨迹</span></h2>
+            <p class="sec__d">教育经历、专业技能、证书与获奖记录，逐条如实陈列。</p>
+          </div>
+          <p class="sec__no">陈允升 · RESUME</p>
+        </div>
+
+        <div class="profile__grid" data-stagger>
+
+          <!-- 教育经历 -->
+          <article class="bio rv">
+            <p class="bio__label">Education · 教育经历</p>
+            <ol class="tl">
+              <li class="tl__item">
+                <span class="tl__when">2021–2023</span>
+                <p class="tl__t">国防科技大学</p>
+                <p class="tl__d">应用统计学专业 <span class="bio__badge">本科</span></p>
+              </li>
+              <li class="tl__item">
+                <span class="tl__when">2025–至今</span>
+                <p class="tl__t">武汉理工大学</p>
+                <p class="tl__d">数字经济专业 <span class="bio__badge">本科</span></p>
+              </li>
+            </ol>
+          </article>
+
+          <!-- 专业技能 -->
+          <article class="bio rv">
+            <p class="bio__label">Skills · 专业技能</p>
+            <p class="bio__txt">较为熟练使用 Python、C、C++ 编程语言；掌握 Ps、Pr 等技能。</p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">C</span>
+              <span class="tag">C++</span>
+              <span class="tag">Ps</span>
+              <span class="tag">Pr</span>
+            </div>
+          </article>
+
+          <!-- 证书 -->
+          <article class="bio rv">
+            <p class="bio__label">Certificates · 证书</p>
+            <ul class="bio__list">
+              <li>大学英语六级</li>
+              <li>计算机二级 C++</li>
+              <li>计算机三级 Linux</li>
+            </ul>
+          </article>
+
+          <!-- 获奖 -->
+          <article class="bio rv">
+            <p class="bio__label">Awards · 获奖</p>
+            <ol class="tl">
+              <li class="tl__item">
+                <span class="tl__when">2023</span>
+                <p class="tl__t">华为杯中国研究生网络安全大赛</p>
+                <p class="tl__d">揭榜挑战赛 · 国赛一等奖</p>
+              </li>
+              <li class="tl__item">
+                <span class="tl__when">2026</span>
+                <p class="tl__t">中国高校计算机大赛网络技术赛</p>
+                <p class="tl__d">A-ST 赛道 · 华中赛区三等奖</p>
+              </li>
+            </ol>
+          </article>
+
         </div>
 
       </div>

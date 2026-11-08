@@ -105,3 +105,30 @@ portal/
 - 修改文件：`portal/index.html`、`portal/progress.md`
 - 未触碰：`portal/css/style.css`、`portal/js/main.js`、`.github/workflows/deploy.yml`
 - 视觉效果：卡片沿用模板自带类名（`.card / .card__thumb / .card__body / .tags / .mini`），与现有深色科技风完全协调
+
+---
+
+## v1.2 — 2026-11-09
+
+### 用户提示词
+> 新增"关于我 / 个人经历"区块（教育经历、专业技能、证书、获奖，全部为真实信息），并在作品网格中新增第 03 张卡片 PureNavigation · 纯净导航站。
+
+### 修改细节
+- **新增个人经历区块**：在 `portal/index.html` 的 `#about` 之前插入 `#profile` 区块，沿用 `sec__head / eyebrow / grad-text / rv` 结构；内部为 `profile__grid` 四张玻璃卡片（带 `data-stagger` 错峰淡入）：
+  - 教育经历：渐变节点时间线 —— 2021–2023 国防科技大学 应用统计学专业 本科；2025–至今 武汉理工大学 数字经济专业 本科
+  - 专业技能：较为熟练使用 Python、C、C++ 编程语言；掌握 Ps、Pr 等技能，配 `.tag` 标签
+  - 证书：大学英语六级 / 计算机二级 C++ / 计算机三级 Linux，薄荷圆点清单
+  - 获奖：时间线 —— 2023 华为杯中国研究生网络安全大赛 揭榜挑战赛 国赛一等奖；2026 中国高校计算机大赛网络技术赛 A-ST 赛道 华中赛区三等奖
+- **新增作品卡片 03**：`#works-grid` 内追加 `<article class="card rv">`，序号 `03`，状态 `LIVE`，图标 🧭
+  - 标题：**PureNavigation · 纯净导航站**
+  - 简介与技术栈取自项目 `README.md` 与《纯净导航站开发流程文档》：只给官方入口的软件导航站，附安装建议、网站真伪判别两个 AI 入口；标签 React 19 / Vite 7 / Tailwind 4 / FastAPI / DeepSeek
+  - 「查看详情」→ `https://github.com/AlexNull03/PureNavigation`（开发流程文档中登记的公开仓库）
+  - 「在线演示」→ `https://www.alexcn.work/PureNavigation/main/`
+- **导航与状态面板**：主导航新增「关于我」锚点（`#profile`）；Hero 状态面板 `UPDATED` 字段更新为 `2026-11-09`
+- **样式**：`portal/css/style.css` 末尾追加第 18 节 Profile 样式（`.profile__grid / .bio / .tl / .bio__badge / .bio__list`），全部复用现有设计令牌与字体；≤760px 单列适配；未改动任何既有规则
+- **脚本未改动**：`js/main.js` 的 `initWorksState()` 自动将 `data-count` 统计为 `03`，新卡片与新区块的 `.rv` 淡入、`data-stagger` 错峰、卡片光斑均自动生效
+
+### 影响范围
+- 修改文件：`portal/index.html`、`portal/css/style.css`、`portal/progress.md`
+- 未触碰：`portal/js/main.js`、`.github/workflows/deploy.yml`
+- 信息真实性：个人经历逐条来自用户提供的真实资料；PureNavigation 简介、技术栈、仓库与线上地址均来自该项目 README 与开发流程文档，未编造任何经历、奖项或数据

@@ -1241,3 +1241,133 @@ code {
   .hero__sub, .hero__acts, .hero__rail, .panel { opacity: 1; }
   .bg__scan, .bg__grain { display: none; }
 }
+
+/* ── 18. Profile / 个人经历 ─────────────────────────────────── */
+.profile__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: clamp(1.1rem, 2.4vw, 1.7rem);
+}
+
+.bio {
+  position: relative;
+  padding: 1.5rem 1.5rem 1.7rem;
+  border-radius: var(--r-md);
+  border: 1px solid var(--line);
+  background: linear-gradient(168deg, rgba(255,255,255,.055), rgba(255,255,255,.014) 52%, rgba(10,10,15,.5));
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+  overflow: hidden;
+  transition: transform .55s var(--ease), border-color .55s var(--ease), box-shadow .55s var(--ease);
+}
+.bio:hover {
+  transform: translateY(-5px);
+  border-color: rgba(140, 158, 255, .32);
+  box-shadow: 0 28px 56px -28px rgba(0,0,0,.9), 0 0 36px -20px rgba(102,126,234,.7);
+}
+
+.bio__label {
+  margin: 0 0 1.15rem;
+  padding-bottom: .9rem;
+  border-bottom: 1px dashed var(--line-2);
+  font-family: var(--f-mono);
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--acc-1);
+}
+
+.bio__txt {
+  margin: 0 0 1.1rem;
+  font-size: .9rem;
+  line-height: 1.85;
+  color: var(--tx-md);
+}
+.bio .tags { margin-top: 0; }
+
+/* 时间线（教育经历 / 获奖） */
+.tl {
+  list-style: none;
+  margin: 0;
+  padding: .1rem 0 .1rem 1.15rem;
+  border-left: 1px solid var(--line-2);
+  display: grid;
+  gap: 1.35rem;
+}
+.tl__item { position: relative; }
+.tl__item::before {
+  content: "";
+  position: absolute;
+  left: calc(-1.15rem - 4.5px);
+  top: .42em;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(140deg, var(--acc-1), var(--acc-2));
+  box-shadow: 0 0 10px rgba(102,126,234,.8);
+}
+.tl__when {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: .68rem;
+  letter-spacing: .18em;
+  color: var(--acc-mint);
+}
+.tl__t {
+  margin: .4rem 0 .2rem;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: .98rem;
+  line-height: 1.4;
+  letter-spacing: -.015em;
+  color: var(--tx-hi);
+}
+.tl__d {
+  margin: 0;
+  font-size: .84rem;
+  line-height: 1.7;
+  color: var(--tx-md);
+}
+
+.bio__badge {
+  display: inline-block;
+  margin-left: .45rem;
+  padding: .1rem .5rem;
+  border-radius: 99px;
+  border: 1px solid rgba(110,231,215,.34);
+  background: rgba(110,231,215,.1);
+  font-family: var(--f-mono);
+  font-size: .6rem;
+  letter-spacing: .14em;
+  color: var(--acc-mint);
+  vertical-align: .12em;
+}
+
+/* 证书清单 */
+.bio__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: .7rem;
+}
+.bio__list li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: .9rem;
+  color: var(--tx-md);
+}
+.bio__list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: .62em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--acc-mint);
+  box-shadow: 0 0 8px rgba(110,231,215,.7);
+}
+
+@media (max-width: 760px) {
+  .profile__grid { grid-template-columns: 1fr; }
+  .bio { padding: 1.3rem 1.25rem 1.45rem; }
+}
