@@ -1398,6 +1398,13 @@ code {
   font-size: .85rem;
   color: var(--tx-md);
 }
+.foot__host {
+  margin-top: .5rem;
+  font-size: .74rem;
+  letter-spacing: .05em;
+  color: var(--tx-md);
+  opacity: .65;
+}
 
 @media (max-width: 760px) {
   .profile__grid { grid-template-columns: 1fr; }

@@ -236,10 +236,18 @@
     });
   }
 
+  /* ── 11. 托管信息（仅自有服务器显示，GitHub Pages 不显示） ── */
+  function initHostNote() {
+    $$('[data-host-note]').forEach(function (el) {
+      if (!/(^|\.)github\.io$/.test(location.hostname)) el.hidden = false;
+    });
+  }
+
   /* ── 启动 ─────────────────────────────────────────────────── */
   function boot() {
     root.classList.add('js-ready');
     initYear();
+    initHostNote();
     initTicker();
     initPanel();
     initWorksState();
