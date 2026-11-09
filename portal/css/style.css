@@ -461,6 +461,20 @@ code {
   font-weight: 500;
 }
 
+.hero__by {
+  margin: .1rem 0 1.6rem;
+  font-size: clamp(1.04rem, 1.9vw, 1.26rem);
+  font-weight: 600;
+  letter-spacing: .08em;
+  color: var(--tx-md);
+  opacity: 0;
+  animation: fade-up .95s var(--ease) .42s forwards;
+}
+.hero__by b {
+  color: var(--tx-hi);
+  font-weight: 700;
+}
+
 .hero__acts {
   display: flex;
   flex-wrap: wrap;
@@ -1238,7 +1252,7 @@ code {
   .rv { opacity: 1; transform: none; }
   .rv--mask { clip-path: none; }
   .hero__title .ln > i { transform: none; }
-  .hero__sub, .hero__acts, .hero__rail, .panel { opacity: 1; }
+  .hero__by, .hero__sub, .hero__acts, .hero__rail, .panel { opacity: 1; }
   .bg__scan, .bg__grain { display: none; }
 }
 
