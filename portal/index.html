@@ -53,9 +53,9 @@
       </a>
 
       <nav class="nav__links" aria-label="主导航">
+        <a class="nav__link" href="#profile">关于我</a>
         <a class="nav__link" href="#works">作品</a>
         <a class="nav__link" href="#pipeline">流程</a>
-        <a class="nav__link" href="#profile">关于我</a>
         <a class="nav__link" href="#about">关于</a>
       </nav>
 
@@ -189,6 +189,117 @@
     </div>
 
     <!-- ══ 作品展示 ══════════════════════════════════════════ -->
+    <!-- ══ 关于我 / 个人经历 ══════════════════════════════════ -->
+    <section class="sec" id="profile">
+      <div class="wrap">
+
+        <div class="sec__head rv rv--mask">
+          <div>
+            <p class="eyebrow">Profile · 关于我</p>
+            <h2 class="sec__t">代码之外，<br>是一条持续生长的<span class="grad-text">个人轨迹</span></h2>
+            <p class="sec__d">教育经历、专业技能、证书、获奖记录与兴趣爱好，逐条如实陈列。</p>
+          </div>
+          <p class="sec__no">陈允升 · RESUME</p>
+        </div>
+
+        <div class="profile__grid" data-stagger>
+
+          <!-- 教育经历 -->
+          <article class="bio rv">
+            <p class="bio__label">Education · 教育经历</p>
+            <ol class="tl">
+              <li class="tl__item">
+                <span class="tl__when">2021–2023</span>
+                <p class="tl__t">国防科技大学</p>
+                <p class="tl__d">应用统计学专业 <span class="bio__badge">本科</span></p>
+              </li>
+              <li class="tl__item">
+                <span class="tl__when">2025–至今</span>
+                <p class="tl__t">武汉理工大学</p>
+                <p class="tl__d">数字经济专业 <span class="bio__badge">本科</span></p>
+              </li>
+            </ol>
+          </article>
+
+          <!-- 专业技能 -->
+          <article class="bio rv">
+            <p class="bio__label">Skills · 专业技能</p>
+            <p class="bio__txt">较为熟练使用 Python、C、C++ 编程语言；掌握 Ps、Pr 等技能。</p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">C</span>
+              <span class="tag">C++</span>
+              <span class="tag">Ps</span>
+              <span class="tag">Pr</span>
+            </div>
+          </article>
+
+          <!-- 证书 -->
+          <article class="bio rv">
+            <p class="bio__label">Certificates · 证书</p>
+            <ul class="bio__list">
+              <li>大学英语六级</li>
+              <li>计算机二级 C++</li>
+              <li>计算机三级 Linux</li>
+            </ul>
+          </article>
+
+          <!-- 获奖 -->
+          <article class="bio rv">
+            <p class="bio__label">Awards · 获奖</p>
+            <ol class="tl">
+              <li class="tl__item">
+                <span class="tl__when">2023</span>
+                <p class="tl__t">华为杯中国研究生网络安全大赛</p>
+                <p class="tl__d">揭榜挑战赛 · 国赛一等奖</p>
+              </li>
+              <li class="tl__item">
+                <span class="tl__when">2026</span>
+                <p class="tl__t">中国高校计算机大赛网络技术赛</p>
+                <p class="tl__d">A-ST 赛道 · 华中赛区三等奖</p>
+              </li>
+            </ol>
+          </article>
+
+          <!-- 兴趣爱好 -->
+          <article class="bio rv">
+            <p class="bio__label">Interests · 兴趣爱好</p>
+            <p class="bio__txt">旅行、摄影、羽毛球。</p>
+            <div class="tags">
+              <span class="tag">旅行</span>
+              <span class="tag">摄影</span>
+              <span class="tag">羽毛球</span>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- 佐证材料 -->
+        <div class="certs rv">
+          <p class="eyebrow">Evidence · 佐证材料</p>
+          <div class="certs__grid" data-stagger>
+            <figure class="cert rv">
+              <img src="assets/certs/cert-huawei-2023.jpeg" alt="华为杯第二届中国研究生网络安全创新大赛 揭榜挑战赛一等奖" loading="lazy">
+              <figcaption>华为杯·揭榜挑战赛 一等奖（2023）</figcaption>
+            </figure>
+            <figure class="cert rv">
+              <img src="assets/certs/cert-ncre2-cpp.jpeg" alt="全国计算机等级考试二级 C++ 合格证书" loading="lazy">
+              <figcaption>计算机二级 C++（2023）</figcaption>
+            </figure>
+            <figure class="cert rv">
+              <img src="assets/certs/cert-ncre3-linux.jpeg" alt="全国计算机等级考试三级 Linux 合格证书" loading="lazy">
+              <figcaption>计算机三级 Linux（2026）</figcaption>
+            </figure>
+            <figure class="cert rv">
+              <img src="assets/certs/cert-cccc-2026.jpeg" alt="2026 中国高校计算机大赛网络技术挑战赛 华中赛区三等奖" loading="lazy">
+              <figcaption>计算机大赛·华中赛区 三等奖（2026）</figcaption>
+            </figure>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <section class="sec" id="works">
       <div class="wrap">
 
@@ -403,94 +514,6 @@
             <h3 class="pipe__t">推送上线</h3>
             <p class="pipe__d">提交至 main 分支，GitHub Actions 自动构建并部署到 Pages 公开地址。</p>
           </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ══ 关于我 / 个人经历 ══════════════════════════════════ -->
-    <section class="sec" id="profile">
-      <div class="wrap">
-
-        <div class="sec__head rv rv--mask">
-          <div>
-            <p class="eyebrow">Profile · 关于我</p>
-            <h2 class="sec__t">代码之外，<br>是一条持续生长的<span class="grad-text">个人轨迹</span></h2>
-            <p class="sec__d">教育经历、专业技能、证书、获奖记录与兴趣爱好，逐条如实陈列。</p>
-          </div>
-          <p class="sec__no">陈允升 · RESUME</p>
-        </div>
-
-        <div class="profile__grid" data-stagger>
-
-          <!-- 教育经历 -->
-          <article class="bio rv">
-            <p class="bio__label">Education · 教育经历</p>
-            <ol class="tl">
-              <li class="tl__item">
-                <span class="tl__when">2021–2023</span>
-                <p class="tl__t">国防科技大学</p>
-                <p class="tl__d">应用统计学专业 <span class="bio__badge">本科</span></p>
-              </li>
-              <li class="tl__item">
-                <span class="tl__when">2025–至今</span>
-                <p class="tl__t">武汉理工大学</p>
-                <p class="tl__d">数字经济专业 <span class="bio__badge">本科</span></p>
-              </li>
-            </ol>
-          </article>
-
-          <!-- 专业技能 -->
-          <article class="bio rv">
-            <p class="bio__label">Skills · 专业技能</p>
-            <p class="bio__txt">较为熟练使用 Python、C、C++ 编程语言；掌握 Ps、Pr 等技能。</p>
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">C</span>
-              <span class="tag">C++</span>
-              <span class="tag">Ps</span>
-              <span class="tag">Pr</span>
-            </div>
-          </article>
-
-          <!-- 证书 -->
-          <article class="bio rv">
-            <p class="bio__label">Certificates · 证书</p>
-            <ul class="bio__list">
-              <li>大学英语六级</li>
-              <li>计算机二级 C++</li>
-              <li>计算机三级 Linux</li>
-            </ul>
-          </article>
-
-          <!-- 获奖 -->
-          <article class="bio rv">
-            <p class="bio__label">Awards · 获奖</p>
-            <ol class="tl">
-              <li class="tl__item">
-                <span class="tl__when">2023</span>
-                <p class="tl__t">华为杯中国研究生网络安全大赛</p>
-                <p class="tl__d">揭榜挑战赛 · 国赛一等奖</p>
-              </li>
-              <li class="tl__item">
-                <span class="tl__when">2026</span>
-                <p class="tl__t">中国高校计算机大赛网络技术赛</p>
-                <p class="tl__d">A-ST 赛道 · 华中赛区三等奖</p>
-              </li>
-            </ol>
-          </article>
-
-          <!-- 兴趣爱好 -->
-          <article class="bio rv">
-            <p class="bio__label">Interests · 兴趣爱好</p>
-            <p class="bio__txt">旅行、摄影、羽毛球。</p>
-            <div class="tags">
-              <span class="tag">旅行</span>
-              <span class="tag">摄影</span>
-              <span class="tag">羽毛球</span>
-            </div>
-          </article>
-
         </div>
 
       </div>

@@ -1371,3 +1371,39 @@ code {
   .profile__grid { grid-template-columns: 1fr; }
   .bio { padding: 1.3rem 1.25rem 1.45rem; }
 }
+
+/* ── 19 · 佐证材料画廊 ─────────────────────────────── */
+.certs { margin-top: 2.2rem; }
+.certs .eyebrow { margin-bottom: 1rem; }
+.certs__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.1rem;
+}
+.cert {
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: rgba(255, 255, 255, .03);
+  overflow: hidden;
+  transition: transform .35s var(--ease), border-color .35s var(--ease);
+}
+.cert:hover { transform: translateY(-4px); border-color: var(--acc-1); }
+.cert img {
+  display: block;
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  object-position: top;
+}
+.cert figcaption {
+  padding: .7rem .9rem;
+  font-size: .8rem;
+  letter-spacing: .04em;
+  color: var(--txt-dim, #9aa9c0);
+  border-top: 1px solid var(--line);
+}
+@media (max-width: 760px) {
+  .certs__grid { grid-template-columns: 1fr 1fr; }
+  .cert img { height: 130px; }
+}
