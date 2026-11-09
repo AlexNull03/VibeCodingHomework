@@ -1407,3 +1407,25 @@ code {
   .certs__grid { grid-template-columns: 1fr 1fr; }
   .cert img { height: 130px; }
 }
+
+/* ── 20 · 首屏核心信息条 + 层级留白优化 ─────────────── */
+.hero__facts {
+  display: flex; flex-wrap: wrap; gap: .55rem;
+  margin: 1.1rem 0 0;
+}
+.fact {
+  font-size: .78rem; letter-spacing: .03em;
+  padding: .4rem .8rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255,255,255,.04);
+  color: var(--txt-dim, #9aa9c0);
+}
+/* 缓解次要信息拥挤：加大区块与卡片留白，弱化次级标签 */
+.profile__grid { gap: 1.4rem; }
+.certs__grid { gap: 1.4rem; }
+.tags .tag { opacity: .85; }
+@media (max-width: 760px) {
+  .hero__facts { gap: .4rem; }
+  .fact { font-size: .72rem; padding: .32rem .6rem; }
+}

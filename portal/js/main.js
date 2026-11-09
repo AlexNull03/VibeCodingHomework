@@ -133,7 +133,7 @@
 
   /* ── 5. 首屏视差 ──────────────────────────────────────────── */
   function initParallax() {
-    if (reduceMotion) return;
+    if (reduceMotion || (navigator.hardwareConcurrency || 8) <= 4) return;
     var layers = $$('[data-parallax]');
     if (!layers.length) return;
 
