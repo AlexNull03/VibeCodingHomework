@@ -132,3 +132,7 @@ portal/
 - 修改文件：`portal/index.html`、`portal/css/style.css`、`portal/progress.md`
 - 未触碰：`portal/js/main.js`、`.github/workflows/deploy.yml`
 - 信息真实性：个人经历逐条来自用户提供的真实资料；PureNavigation 简介、技术栈、仓库与线上地址均来自该项目 README 与开发流程文档，未编造任何经历、奖项或数据
+
+## v1.3 — 2026-11-09（补充兴趣爱好）
+- `#profile` 新增第 5 张卡片「Interests · 兴趣爱好」：旅行、摄影、羽毛球（用户口述真实爱好）；区块描述同步更新
+- 目的：补齐个人介绍型网站"爱好"展示项（AI 评估曾指出缺失）；仅改 `portal/index.html` 与 `progress.md`
