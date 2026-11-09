@@ -1380,6 +1380,24 @@ code {
   background: var(--acc-mint);
   box-shadow: 0 0 8px rgba(110,231,215,.7);
 }
+.bio__list a,
+.foot__contact a {
+  color: var(--tx-hi);
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(255,255,255,.35);
+  overflow-wrap: anywhere;
+  transition: border-color .2s var(--ease), color .2s var(--ease);
+}
+.bio__list a:hover,
+.foot__contact a:hover {
+  color: var(--acc-mint);
+  border-color: var(--acc-mint);
+}
+.foot__contact {
+  margin-top: .45rem;
+  font-size: .85rem;
+  color: var(--tx-md);
+}
 
 @media (max-width: 760px) {
   .profile__grid { grid-template-columns: 1fr; }
